@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">socketClient</string>
+    <string name="login">LOGIN</string>
+    <string name="e_mail">e-mail</string>
+    <string name="password">senha</string>
+</resources>
