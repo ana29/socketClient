@@ -25,4 +25,16 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // Retrofit
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    // OKHTTP
+    api 'com.squareup.okhttp3:okhttp:3.10.0'
+
+    // Socket
+    api 'com.github.nkzawa:socket.io-client:0.3.0'
+
+
 }
