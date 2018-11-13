@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.ana.socketclient.endpoint.ApiClient;
 import com.example.ana.socketclient.endpoint.IoService;
 import com.example.ana.socketclient.model.Login;
+import com.example.ana.socketclient.model.User;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,15 +66,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void postLogin(String email, String password) {
 
-        Call<ResponseBody> call = ApiClient.getInstance()
+        Call<User> call = ApiClient.getInstance()
                 .postLogin(new Login(email, password));
-        call.enqueue(new Callback<ResponseBody>() {
+        call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(@NonNull Call<ResponseBody> call,
-                                   @NonNull Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<User> call,
+                                   @NonNull Response<User> response) {
                 if (response.isSuccessful()) {
 
-                    String token = response.headers().get("authorization");
+                    User user = response.body();
+                    String token = user.getToken();
                     IoService.getInstance().connect(token);
 
                     SharedPreferences.Editor editor = mSharedPreferences.edit();
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
                 Toast.makeText(getBaseContext(), t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

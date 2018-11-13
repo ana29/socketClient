@@ -7,7 +7,6 @@ import java.util.Objects;
 public class Login {
     @SerializedName("email")
     private String email;
-
     @SerializedName("password")
     private String password;
 
