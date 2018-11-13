@@ -27,11 +27,6 @@ public class IoService {
     private IoService() {
     }
 
-    /**
-     * This method provides the unique instance of the {@link IoService}.
-     *
-     * @return The instance of the {@link IoService}.
-     */
     public static IoService getInstance() {
         if (mInstance == null) {
 
@@ -40,9 +35,7 @@ public class IoService {
         return mInstance;
     }
 
-    /**
-     * This method provides a connection with the server.
-     */
+
     public void connect(final String token) {
         mSocket.io().on(Manager.EVENT_TRANSPORT, new Emitter.Listener() {
             @Override
@@ -63,11 +56,6 @@ public class IoService {
         mSocket.connect();
     }
 
-    /**
-     * Access the socket object.
-     *
-     * @return the socket connection
-     */
     public Socket getIo() {
         return mSocket;
     }
